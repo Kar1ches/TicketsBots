@@ -157,6 +157,7 @@ async def check_etix(client, url, event):
     try:
         r = await client.get(url, headers=HEADERS, follow_redirects=True)
         html = r.text
+        log.info("[etix] HTML snippet: %s", html[:500])
     except Exception as e:
         return {"available": False, "pairs": [], "total": 0, "detail": f"Fetch error: {e}"}
 
